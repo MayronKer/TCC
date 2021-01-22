@@ -1,0 +1,65 @@
+{% extends "layout.html" %}
+{% block body %}
+
+  <div class="row">
+    <div class="col-md-5">
+      {% with messages = get_flashed_messages()  %}
+      {% if messages %}
+      {% for message in messages %}
+      <div class="alert alert-success alert-dismissible fade show" role="alert">
+        {{ message }}
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      {% endfor %}
+      {% endif %}
+      {% endwith %}
+      <div class="card card-body">
+        <form action="{{url_for('add_producto')}}" method="POST">
+          <div class="form-group">
+            <input type="text" class="form-control" name="nombre" placeholder="Nombre">
+          </div>
+          <div class="form-group">
+            <input type="text" class="form-control" name="marca" placeholder="Marca">
+          </div>
+          <div class="form-group">
+            <input type="text" class="form-control" name="precio" placeholder="Precio">
+          </div>
+          <button class="btn btn-primary btn-block">
+            Salvar
+          </button>
+        </form>
+      </div>
+    </div>
+    <div class="col-md-7">
+      <table class="table table-striped table-hover table-bordered table-sm bg-white">
+        <thead>
+          <tr>
+            <td>ID</td>
+            <td>Nome</td>
+            <td>Marca</td>
+            <td>Preço</td>
+            <td>Ação</td>
+          </tr>
+        </thead>
+        <tbody>
+          {% for producto in productos %}
+          <tr>
+            <td>{{producto.0}}</td>
+            <td>{{producto.1}}</td>
+            <td>{{producto.2}}</td>
+            <td>{{producto.3}}</td>
+            <td>
+              <a href="/edit/{{producto.0}}" class="btn btn-secondary">Editar</a>
+              <a href="/delete/{{producto.0}}" class="btn btn-danger btn-delete">Excluir</a>
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+{% endblock %}
