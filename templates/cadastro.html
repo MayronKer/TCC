@@ -14,7 +14,7 @@
      <div class="col-md-3"></div>
     <div class="col-md-6 order-md-1" style="margin-top:40px;">
       <h4 class="mb-3 text-center">Cadastro</h4>
-      <form class="needs-validation" novalidate>
+         <form class="needs-validation" action="{{ url_for('acao_cadastro') }}">
         <div class="row">
           <div class="col-md-6 mb-3">
             <label for="nome">Nome</label>
@@ -32,22 +32,9 @@
           </div>
         </div>
 
-        <!-- <div class="mb-3">
-          <label for="username">Username</label>
-          <div class="input-group">
-            <div class="input-group-prepend">
-              <span class="input-group-text">@</span>
-            </div>
-            <input type="text" class="form-control" id="username" placeholder="Username" required>
-            <div class="invalid-feedback" style="width: 100%;">
-              Your username is required.
-            </div>
-          </div>
-        </div> -->
-
         <div class="mb-3">
           <label for="email">Email</label>
-          <input type="email" class="form-control" id="email" placeholder="psicologiaetecnologia@gmail.com">
+          <input type="email" class="form-control" id="email" placeholder="exemplo@exemplo.com" required autofocus>
           <div class="invalid-feedback">
             Por favor, entre em email válido.
           </div>
@@ -75,17 +62,18 @@
              <option value="0">Masculino</option>
              <option value="1">Feminino</option>
              <option value="2">Outro</option>
+             <option value="3">Desejo não informar</option>
           </select>
           <div class="invalid-feedback">
-            Por favor, entre em email válido.
+            Por favor, entre um valor válido.
           </div>
         </div>
 
         <div class="mb-3">
-          <label for="email">Data de Nascimento</label>
-          <input type="email" class="form-control" id="email" placeholder="DD/MM/AAAA">
+          <label for="dataNasc">Data de Nascimento</label>
+          <input type="text" class="form-control" id="dataNasc" placeholder="DD/MM/AAAA">
           <div class="invalid-feedback">
-            Por favor, entre em email válido.
+            Por favor, entre um valor válido.
           </div>
         </div>
 
@@ -193,7 +181,6 @@
         </div> -->
         <hr class="mb-4">
         <button class="btn btn-primary btn-lg btn-block" type="submit"><a href="sobre.html" style="color:white;">Cadastrar</a></button>
-        <a href="login.html" style="color:#0275D8;text-decoration: :underline;">Voltar</a>
       </form>
     </div>
   </div>
