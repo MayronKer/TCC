@@ -1,8 +1,0 @@
-MVC - Model, View e Controller. Cada camada é responsável por fazer uma parte do software
-
-Um exemplo de Como funciona o MVC:
-   - Um usuário faz uma requisição ao sistema
-   - Primeiro o CONTROLLER recebe a requisição
-   - O CONTROLLER solicita dados do MODEL
-   - O MODEL entrega os dados ao CONTROLLER
-   - As VIEWs interferem de forma a formatar os dados 
