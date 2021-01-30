@@ -6,7 +6,7 @@ from views import app
 @app.route("/")
 def index():
     cur = mysql.connection.cursor()
-    cur.execute("SELECT * FROM TCC;")
+    cur.execute("SELECT * FROM usuario;")
     rv = cur.fetchall()
     cur.close()
     return render_template("index.html", TCC=rv)

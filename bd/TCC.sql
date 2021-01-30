@@ -16,7 +16,7 @@ CREATE TABLE transtorno(
 	id INT AUTO_INCREMENT PRIMARY KEY,
     nome varchar(45) NOT NULL,
     descricao varchar(45),
-    ocorrencia double #Índice de ocorrência desse transtorno
+    ocorrencia float #Índice de ocorrência desse transtorno
 );
 
 CREATE TABLE sintoma(
