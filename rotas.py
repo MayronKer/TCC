@@ -1,10 +1,15 @@
 from flask import render_template
+from models import mysql
 from views import app
 
-# cadastrando as rotas
+# rotas de sites
 @app.route("/")
 def index():
-    return render_template("index.html")
+    cur = mysql.connection.cursor()
+    cur.execute("SELECT * FROM TCC;")
+    rv = cur.fetchall()
+    cur.close()
+    return render_template("index.html", TCC=rv)
 
 @app.route("/sobre.html")
 def sobre():
