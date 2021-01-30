@@ -1,6 +1,7 @@
 from views import app
+from flask import redirect, url_for
 
 
-@app.route('/acao_login', methods=["POST"])
+@app.route('/acao_login', methods=["POST", "GET"])
 def acao_login():
-    return redirect(url_for('sobre'))
+    return redirect('sobre.html')
