@@ -4,11 +4,13 @@ from models import mysql
 
 @app.route('/acao_login', methods=["POST", "GET"])
 def acao_login():
+    email = request.form['email']
+    senha = request.form['senha']
     conexao = mysql.connection.cursor()
-    conexao.execute("SELECT * FROM computer;")
+    conexao.execute("SELECT id FROM usuario WHERE email = {} and senha = {};".format(email, senha))
     bd = conexao.fetchall()
-    cur.close()
-    return redirect('sobre.html')
+    conexao.close()
+    return redirect('sobre.html', bd)
 
 @app.route('/acao_cadastro', methods=["POST", "GET"])
 def acao_cadastro():
