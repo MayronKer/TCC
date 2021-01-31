@@ -4,28 +4,35 @@
 {% endblock %}
 {% block stylesheet %}
    <link href="static/css/form-validation.css" rel="stylesheet">
+
+{% endblock %}
+{% block script %}
+   <script>
+      var erroSenha  = GetElementById("container").getAttribute("data-alert");
+   alert("okay");
+   </script>
 {% endblock %}
 {% block body %}
 
-<div class="container bg-light">
+<div class="container bg-light" id="container" data-alert="{{erroSenha}}">
 
   <div class="row">
 
      <div class="col-md-3"></div>
     <div class="col-md-6 order-md-1" style="margin-top:40px;">
-      <h4 class="mb-3 text-center">Cadastro</h4>
-         <form class="needs-validation" action="{{ url_for('acao_cadastro') }}">
+      <h3 class="mb-3 text-center">Cadastro</h3>
+         <form class="needs-validation" action="{{ url_for('acao_cadastro') }}" method="POST">
         <div class="row">
           <div class="col-md-6 mb-3">
             <label for="nome">Nome</label>
-            <input type="text" class="form-control" id="nome" placeholder="" value="" required>
+            <input type="text" class="form-control" id="nome" name="nome" placeholder="" value="" required autofocus>
             <div class="invalid-feedback">
               Não pode ficar em branco.
             </div>
           </div>
           <div class="col-md-6 mb-3">
             <label for="sobrenome">Sobrenome</label>
-            <input type="text" class="form-control" id="sobrenome" placeholder="" value="" required>
+            <input type="text" class="form-control" id="sobrenome" name="sobrenome" placeholder="" value="" required>
             <div class="invalid-feedback">
               Não pode ficar em branco.
             </div>
@@ -34,7 +41,7 @@
 
         <div class="mb-3">
           <label for="email">Email</label>
-          <input type="email" class="form-control" id="email" placeholder="exemplo@exemplo.com" required autofocus>
+          <input type="email" class="form-control" id="email" name="email" placeholder="exemplo@exemplo.com" required>
           <div class="invalid-feedback">
             Por favor, entre em email válido.
           </div>
@@ -42,14 +49,14 @@
          <div class="row">
            <div class="col-md-6 mb-3">
              <label for="senha">Senha</label>
-             <input type="text" class="form-control" id="senha" placeholder="" value="" required>
+             <input type="password" class="form-control" id="senha" name="senha" placeholder="" value="" required>
              <div class="invalid-feedback">
                Não pode ficar em branco.
              </div>
            </div>
            <div class="col-md-6 mb-3">
              <label for="confirmarSenha">Confirmar senha</label>
-             <input type="text" class="form-control" id="confirmarSenha" placeholder="" value="" required>
+             <input type="password" class="form-control" id="confirmarSenha" name="confirmarSenha" placeholder="" value="" required>
              <div class="invalid-feedback">
                Não pode ficar em branco.
              </div>
@@ -57,7 +64,7 @@
          </div>
 
         <div class="mb-3">
-          <label for="email">Gênero</label>
+          <label for="genero">Gênero</label>
           <select class="form-control" name="genero">
              <option value="0">Masculino</option>
              <option value="1">Feminino</option>
@@ -71,116 +78,14 @@
 
         <div class="mb-3">
           <label for="dataNasc">Data de Nascimento</label>
-          <input type="text" class="form-control" id="dataNasc" placeholder="DD/MM/AAAA">
+          <input type="date" class="form-control" id="dataNasc" name="dataNasc" placeholder="DD/MM/AAAA">
           <div class="invalid-feedback">
             Por favor, entre um valor válido.
           </div>
         </div>
-
-        <!-- <div class="mb-3">
-          <label for="address">Address</label>
-          <input type="text" class="form-control" id="address" placeholder="1234 Main St" required>
-          <div class="invalid-feedback">
-            Please enter your shipping address.
-          </div>
-        </div> -->
-
-        <!-- <div class="mb-3">
-          <label for="address2">Address 2 <span class="text-muted">(Optional)</span></label>
-          <input type="text" class="form-control" id="address2" placeholder="Apartment or suite">
-        </div> -->
-
-        <!-- <div class="row">
-          <div class="col-md-5 mb-3">
-            <label for="country">Country</label>
-            <select class="custom-select d-block w-100" id="country" required>
-              <option value="">Choose...</option>
-              <option>United States</option>
-            </select>
-            <div class="invalid-feedback">
-              Please select a valid country.
-            </div>
-          </div>
-          <div class="col-md-4 mb-3">
-            <label for="state">State</label>
-            <select class="custom-select d-block w-100" id="state" required>
-              <option value="">Choose...</option>
-              <option>California</option>
-            </select>
-            <div class="invalid-feedback">
-              Please provide a valid state.
-            </div>
-          </div>
-          <div class="col-md-3 mb-3">
-            <label for="zip">Zip</label>
-            <input type="text" class="form-control" id="zip" placeholder="" required>
-            <div class="invalid-feedback">
-              Zip code required.
-            </div>
-          </div>
-        </div> -->
-        <!-- <hr class="mb-4"> -->
-        <!-- <div class="custom-control custom-checkbox">
-          <input type="checkbox" class="custom-control-input" id="same-address">
-          <label class="custom-control-label" for="same-address">Shipping address is the same as my billing address</label>
-        </div> -->
-        <!-- <div class="custom-control custom-checkbox">
-          <input type="checkbox" class="custom-control-input" id="save-info">
-          <label class="custom-control-label" for="save-info">Save this information for next time</label>
-        </div> -->
-        <!-- <hr class="mb-4"> -->
-
-        <!-- <h4 class="mb-3">Payment</h4> -->
-
-        <!-- <div class="d-block my-3">
-          <div class="custom-control custom-radio">
-            <input id="credit" name="paymentMethod" type="radio" class="custom-control-input" checked required>
-            <label class="custom-control-label" for="credit">Credit card</label>
-          </div>
-          <div class="custom-control custom-radio">
-            <input id="debit" name="paymentMethod" type="radio" class="custom-control-input" required>
-            <label class="custom-control-label" for="debit">Debit card</label>
-          </div>
-          <div class="custom-control custom-radio">
-            <input id="paypal" name="paymentMethod" type="radio" class="custom-control-input" required>
-            <label class="custom-control-label" for="paypal">PayPal</label>
-          </div>
-        </div> -->
-        <!-- <div class="row">
-          <div class="col-md-6 mb-3">
-            <label for="cc-name">Name on card</label>
-            <input type="text" class="form-control" id="cc-name" placeholder="" required>
-            <small class="text-muted">Full name as displayed on card</small>
-            <div class="invalid-feedback">
-              Name on card is required
-            </div>
-          </div>
-          <div class="col-md-6 mb-3">
-            <label for="cc-number">Credit card number</label>
-            <input type="text" class="form-control" id="cc-number" placeholder="" required>
-            <div class="invalid-feedback">
-              Credit card number is required
-            </div>
-          </div>
-        </div> -->
-        <!-- <div class="row">
-          <div class="col-md-3 mb-3">
-            <label for="cc-expiration">Expiration</label>
-            <input type="text" class="form-control" id="cc-expiration" placeholder="" required>
-            <div class="invalid-feedback">
-              Expiration date required
-            </div>
-          </div>
-          <div class="col-md-3 mb-3">
-            <label for="cc-cvv">CVV</label>
-            <input type="text" class="form-control" id="cc-cvv" placeholder="" required>
-            <div class="invalid-feedback">
-              Security code required
-            </div>
-          </div>
-        </div> -->
+        <input type="hidden" class="form-control" id="dataCadastro" name="dataCadastro" value="2000-12-2">
         <hr class="mb-4">
-        <button class="btn btn-primary btn-lg btn-block" type="submit"><a href="sobre.html" style="color:white;">Cadastrar</a></button>
+        <button class="btn btn-primary btn-lg btn-block" type="submit">Cadastrar</button>
       </form>
     </div>
   </div>

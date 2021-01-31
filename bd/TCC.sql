@@ -30,7 +30,11 @@ CREATE TABLE sessao(
 	dataInicio datetime,
     dataTermino datetime,
     statusSessao TINYINT(3),
-    idUsuario INT
+    idUsuario INT,
+    FOREIGN KEY (idUsuario)
+		REFERENCES usuario(id)
+        ON DELETE RESTRICT
+        ON UPDATE NO ACTION
 );
 
 CREATE TABLE transtorno_has_sintoma(
@@ -45,3 +49,5 @@ CREATE TABLE transtorno_has_sintoma(
         ON DELETE CASCADE
         ON UPDATE CASCADE
 );
+
+# select * from usuario;
