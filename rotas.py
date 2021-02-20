@@ -39,10 +39,10 @@ def perfil():
 def orientacoes():
     return render_template("orientacoes.html")
 
-@app.route("/login.html")
-def login():
-    return render_template("login.html")
-
 @app.route("/cadastro.html")
 def cadastro():
     return render_template("cadastro.html")
+
+@app.route("/login.html")
+def login():
+    return render_template("login.html")

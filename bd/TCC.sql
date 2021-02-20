@@ -50,4 +50,4 @@ CREATE TABLE transtorno_has_sintoma(
         ON UPDATE CASCADE
 );
 
-# select * from usuario;
+select * from usuario;
