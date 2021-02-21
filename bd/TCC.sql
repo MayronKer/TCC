@@ -49,5 +49,3 @@ CREATE TABLE transtorno_has_sintoma(
         ON DELETE CASCADE
         ON UPDATE CASCADE
 );
-
-select * from usuario;
