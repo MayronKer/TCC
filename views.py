@@ -1,7 +1,7 @@
-# Para as rotas
-from flask import Flask
+# conectando MVC
+from models import app
 
-# configurações iniciais para rotas e banco de dados
-app = Flask(__name__)
-
-import rotas
+# definindo o que fazer ao inicial o software
+if __name__ == "__main__":
+    app.debug = True
+    app.run()

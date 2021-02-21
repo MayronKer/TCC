@@ -1,6 +1,5 @@
 from flask import render_template
-from models import mysql
-from views import app
+from models import mysql, app
 
 # rotas de sites
 @app.route("/")
